@@ -122,7 +122,7 @@ class RingCentral
         io = StringIO.new(payload.to_json)
         payload = {}
         payload[:json] = Faraday::UploadIO.new(io, 'application/json')
-        payload[:attachment] = files.map{ |file| Faraday::UploadIO.new(file[0], file[1]) }
+        payload[:attachment] = files.map{ |file| Faraday::UploadIO.new(file[0], file[1], file[2]) }
         req.headers = headers
         req.body = payload
       elsif payload != nil && @token != nil
