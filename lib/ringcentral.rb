@@ -40,7 +40,7 @@ class RingCentral
       @timer = nil
     end
     if @auto_refresh && value != nil
-      @timer = Concurrent::TimerTask.new(execution_interval: value['expires_in'] - 120, timeout_interval: 60) { self.refresh }
+      @timer = Concurrent::TimerTask.new(execution_interval: value['expires_in'] - 120) { self.refresh }
       @timer.execute
     end
   end
